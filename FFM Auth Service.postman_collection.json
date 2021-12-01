@@ -1,0 +1,178 @@
+{
+	"info": {
+		"_postman_id": "3fbba4e3-2410-4172-b3c7-d506387689a5",
+		"name": "FFM Auth Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Positive Copy",
+			"item": [
+				{
+					"name": "Create a FFM OT member",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \"eddb2\",\r\n    \"firstname\": \"Moose\",\r\n    \"lastname\": \"Jaw\",\r\n    \"username\": \"{{$randomUserName}}\"\r\n}"
+						},
+						"url": {
+							"raw": "http://137.184.134.215:5001/api/v1/field-force/auth/register-admin-user",
+							"protocol": "http",
+							"host": [
+								"137",
+								"184",
+								"134",
+								"215"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"field-force",
+								"auth",
+								"register-admin-user"
+							]
+						},
+						"description": "Objective: As a Tester, I should be able to create an OT member with all the given fields.\n\nSE: Shahed\nPO: Pranto\nTester: Suhan\n\nTest Data:{\n    \"email\": \"Moosejaw@gmail.com\",\n    \"password\": \"eddb2\",\n    \"firstname\": \"Moose\",\n    \"lastname\": \"Jaw\",\n    \"username\": \"jaw2\"\n}\n\nExpected Result: As a tester, I should be able to create an OT member with Email, Password, Firstname, Lastname, and username\n\nActual result: As a tester, I was able to create an Ot member with Email, Password, Firstname, Lastname and username\n\nTest Result:{\n    \"message\": \"Successfully registered admin user jaw2.\",\n    \"status\": \"success\"\n}\nTest status: Passed Status code: 201 created"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Negative Copy",
+			"item": [
+				{
+					"name": "Create a FFM OT member without email and password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successfully created 403\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"\",\r\n    \"password\": \"\",\r\n    \"firstname\": \"Moose\",\r\n    \"lastname\": \"Jaw\",\r\n    \"username\": \"jaw2\"\r\n}"
+						},
+						"url": {
+							"raw": "http://137.184.134.215:5001/api/v1/field-force/auth/register-admin-user",
+							"protocol": "http",
+							"host": [
+								"137",
+								"184",
+								"134",
+								"215"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"field-force",
+								"auth",
+								"register-admin-user"
+							]
+						},
+						"description": "Objective: As a Tester, I should be able to create an OT member with all the given fields.\n\nSE: Shahed\nPO: Pranto\nTester: Suhan\n\nTest Data:{\n    \"email\": \"Moosejaw@gmail.com\",\n    \"password\": \"eddb2\",\n    \"firstname\": \"Moose\",\n    \"lastname\": \"Jaw\",\n    \"username\": \"jaw2\"\n}\n\nExpected Result: As a tester, I should be able to create an OT member with Email, Password, Firstname, Lastname, and username\n\nActual result: As a tester, I was able to create an Ot member with Email, Password, Firstname, Lastname and username\n\nTest Result:{\n    \"message\": \"Successfully registered admin user jaw2.\",\n    \"status\": \"success\"\n}\nTest status: Passed Status code: 201 created"
+					},
+					"response": []
+				},
+				{
+					"name": "Create a FFM OT member without password and username",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successfully created 403\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"Moosejaw@gmail.com\",\r\n    \"password\": \"\",\r\n    \"firstname\": \"Moose\",\r\n    \"lastname\": \"Jaw\",\r\n    \"username\": \"\"\r\n}"
+						},
+						"url": {
+							"raw": "http://137.184.134.215:5001/api/v1/field-force/auth/register-admin-user",
+							"protocol": "http",
+							"host": [
+								"137",
+								"184",
+								"134",
+								"215"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"field-force",
+								"auth",
+								"register-admin-user"
+							]
+						},
+						"description": "Objective: As a Tester, I should be able to create an OT member with all the given fields.\n\nSE: Shahed\nPO: Pranto\nTester: Suhan\n\nTest Data:{\n    \"email\": \"Moosejaw@gmail.com\",\n    \"password\": \"eddb2\",\n    \"firstname\": \"Moose\",\n    \"lastname\": \"Jaw\",\n    \"username\": \"jaw2\"\n}\n\nExpected Result: As a tester, I should be able to create an OT member with Email, Password, Firstname, Lastname, and username\n\nActual result: As a tester, I was able to create an Ot member with Email, Password, Firstname, Lastname and username\n\nTest Result:{\n    \"message\": \"Successfully registered admin user jaw2.\",\n    \"status\": \"success\"\n}\nTest status: Passed Status code: 201 created"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
